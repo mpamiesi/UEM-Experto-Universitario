@@ -46,5 +46,33 @@ contract AuctionExample {
                 emit Status("Subasta creada");
                 }
                 
+                
+    // --------------------- Funciones que modifican datos (set) ------------------------------------
+    
+    // Funcion
+    // Nombre: bid
+    // Uso: Permite a cualquier postor hacer una oferta de dinero para la subasta
+    //      El dinero es almacenado en el contrato, junto con el nombre del postor
+    //      El postor cuya oferta ha sido superada recibe de vuelta el dinero pujado
+    function bid() public payable {
+        if(block.timestamp > (createdTime + secondsToEnd) && activeContract == true){
+                checkIfAuctionEnded();
+       } else {
+            if (msg.value > highestPrice && msg.value > basePrice){
+            // Devuelve el dinero al ANTIGUO máximo postor
+            highestBidder.transfer(highestPrice);
+            
+            // Actualiza el nombre y precio al NUEVO máximo postor
+            highestBidder = msg.sender;
+            highestPrice = msg.value;
+            
+            // Se emite un evento
+            emit Status("Nueva puja mas alta, el último postor tiene su dinero de vuelta");
+      } else {
+            // Se emite un evento
+            emit Status("La puja no es posible, no es lo suficientemente alta");
+            revert();
+            }
+           }
 }
                 
