@@ -63,7 +63,7 @@ contract AuctionExample {
             highestBidder.transfer(highestPrice);
             
             // Actualiza el nombre y precio al NUEVO máximo postor
-            highestBidder = msg.sender;
+            highestBidder = payable(msg.sender);
             highestPrice = msg.value;
             
             // Se emite un evento
