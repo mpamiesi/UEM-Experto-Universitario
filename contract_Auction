@@ -1,5 +1,32 @@
-//Header with solidity version
+// Versión de solidity del Smart Contract
 pragma solidity >= 0.8.0;
 
-//Declare smart contract with a name
+// Información del SMart Contract
+// Nombre: Auction Example
+// Logica: Implementa subasta de productos entre varios participantes
+
+//Declaración del Smart Contract - Auction Example
 contract AuctionExample {
+
+        // ------------ Variables (datos) ---------------
+        // Información de la subasta
+        string public description;
+        uint public basePrice;
+        uint256 private secondToEnd;
+        uint256 public createdTime;
+        
+        // Antiguo/nuevo dueño de subasta
+        address payable public originalOwner;
+        address public newOwner;
+        
+        // Puja más alta
+        address payable public highestBidder;
+        uint public highestPrice;
+        
+        // Estado de la subasta
+        bool public activeContract;
+        
+        // ------------------ Eventos (pueden ser emitidos por el Smart Contract) --------------------------
+        event Status/string _message);
+        event Result(string _message, address winner);
+        
