@@ -1,7 +1,7 @@
 // Versión de solidity del Smart Contract
 pragma solidity >= 0.8.0;
 
-// Información del SMart Contract
+// Información del Smart Contract
 // Nombre: Auction Example
 // Logica: Implementa subasta de productos entre varios participantes
 
@@ -30,3 +30,21 @@ contract AuctionExample {
         event Status/string _message);
         event Result(string _message, address winner);
         
+        // Constructor
+        // Uso: Inicializa el Smart Contract - Auction Example con: description, precio y tiempo
+        contructor() public {
+       
+                // Inicializa el valor a las variables (datos)
+                description = "En esta subasta se ofrece un coche. Se trata de un Benz Truck negro mate";
+                basePrice = 0,2 ether;
+                secondsToEnd = 86400;
+                activeContract = true;
+                createdTime = block.timestamp;
+                originalOwner = msg.sender;
+                
+                // Se emite un Evento
+                emit Status("Subasta creada");
+                }
+                
+}
+                
