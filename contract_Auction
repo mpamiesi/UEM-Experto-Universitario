@@ -96,4 +96,22 @@ function checkIfAuctionEnded() public{
   revert();
   }
 }
+
+
+// ------------------------- Funciones que consultan datos (get) ------------------------------------------
+
+// Funcion
+// Nombre: getAuctionInfo
+// Logica: Consulta la description, y la fecha de creacion de la subasta
+function getAuctionInfo() public view returms (string memory, uint){
+        return (description, createdTime);
+        }
+        
+ // Funcion
+ // Nombre: getHighestPrice
+ // Logica: Consulta el precio de la maxima puja
+ function getHighestPrice() public view returns (uint){
+ return (highestPrice);
+ }
+}
        
