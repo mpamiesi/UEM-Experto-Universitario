@@ -1,0 +1,5 @@
+//Header with solidity version
+pragma solidity >= 0.8.0;
+
+//Declare smart contract with a name
+contract AuctionExample {
