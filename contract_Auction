@@ -32,11 +32,11 @@ contract AuctionExample {
         
         // Constructor
         // Uso: Inicializa el Smart Contract - Auction Example con: description, precio y tiempo
-        contructor() public {
+        constructor() public {
        
                 // Inicializa el valor a las variables (datos)
                 description = "En esta subasta se ofrece un coche. Se trata de un Benz Truck negro mate";
-                basePrice = 0,2 ether;
+                basePrice = 0.01 ether;
                 secondsToEnd = 86400;
                 activeContract = true;
                 createdTime = block.timestamp;
