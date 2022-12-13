@@ -76,3 +76,24 @@ contract AuctionExample {
            }
 }
                 
+// Funcion
+// Nombre: checkIfAuctionEnded
+// Uso: Comprueba si la puja ha terminado, y en ese caso,
+//      transfiere el balance del contrato al propietario de la subasta
+function checkIfAuctionEnded() public{
+        if (block.timestamp > (createdTime + secondsToEnd)){
+                // Finaliza la subasta
+                activeContract = false;
+                
+        // Transfiere dinero (maxima puja) al propietario original de la subasta
+        newOwner = highestBidder;
+        originalOwner.transfer(highestPrice);
+        
+        // Se emiten varios eventos
+        emit Status("La subasta ha finalizado");
+        emit Result("El ganador de la subasta ha sido:", highestBidder);
+  } else{
+  revert();
+  }
+}
+       
