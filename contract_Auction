@@ -27,7 +27,7 @@ contract AuctionExample {
         bool public activeContract;
         
         // ------------------ Eventos (pueden ser emitidos por el Smart Contract) --------------------------
-        event Status/string _message);
+        event Status(string _message);
         event Result(string _message, address winner);
         
         // Constructor
@@ -97,7 +97,6 @@ function checkIfAuctionEnded() public{
   }
 }
 
-
 // ------------------------- Funciones que consultan datos (get) ------------------------------------------
 
 // Funcion
@@ -115,3 +114,18 @@ function getAuctionInfo() public view returms (string memory, uint){
  }
 }
        
+// -------------------------- Funciones de panico/emergencia ----------------------------------------------
+
+// Funcion
+// Nombre: stopAuction
+// Uso: Para la subasta y devuelve el dinero al maximo postor
+function stopAuction() public{
+        require(msg.sender == originalOwner);
+        // Finaliza la subasta
+        activeContract = false;
+        //Devuelve el dinero almaximo postor
+        highestBidder.transfer(highestPrice);
+        
+        // Se emite un evento
+        emit Status("La subasta se ha parado");
+     }
