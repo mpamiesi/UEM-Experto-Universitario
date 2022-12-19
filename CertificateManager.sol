@@ -31,7 +31,7 @@ contract CertificateManager {
     bool public pass;
     
     // ------------------------------------ Mapeo de certificados por nombre del estudiante ------------------------------------
-    mapping (string => Certificate) public certificates;
+    mapping(string => Certificate) public certificates;
     
     // ------------------------------------ Constructor ------------------------------------
     // Uso: Inicializa el Smart Contract -> CertificateManager con: entidad emisora, titulación, alumno, calificación y año de obtención
@@ -40,6 +40,16 @@ contract CertificateManager {
     // Inicialización de algunos certificados de ejemplo
     certificates["Vitalik Butherin"] = Certificate("Universidad Europea de Madrid", "Vitalik Butherin", "Experto universitario en blockchain", 70, 2015, true);
     certificates["Elon Musk"] = Certificates("Universidad Europea de Madrid", "Elon Musk", "Ingeniería aeronáutica", 45, 2019, false);
-   };
+  };
     
+    // Función para crear un ceertificado
+    function createCertificate(string, string, string, uint, uint, bool) public {
     
+    //Verificación de que no existe un certificado para el estudiante
+    require(certificates[_student].student == string(0), "Ya existe un certificado para este curso y estudiante");
+    
+    //Creación del certificado
+    certificates[_student] = Certificate(_entity, _course, _student, _grade, _year, false);
+  };
+  
+  // Método para verificar un certificado
