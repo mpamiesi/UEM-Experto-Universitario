@@ -53,3 +53,21 @@ contract CertificateManager {
   };
   
   // Método para verificar un certificado
+  function verifyCertificate(string _student) public {
+    //Verficiación de que existe un certificado para el estudiante
+    require(certificates[_student].student != string(0), "No existe un certificado para este estudiante");
+    
+    //Verificación del certificado 
+    certificates[_student].verified = true;
+    };
+    
+    // Método para obtener la información de un certificado
+    function getCertificate(string _student) public view returns (string, string, string, uint, uint, bool) {
+        // Verificación de que existe un certificado para el estudiante
+        require(certificates[_student].student != bytes32(0), "No existe un certificado para este estudiante");
+
+        // Devolución de la información del certificado
+        return (certificates[_student].student, certificates[_student].course, certificates[_student].grade, certificates[_student].verified);
+    }
+}
+
