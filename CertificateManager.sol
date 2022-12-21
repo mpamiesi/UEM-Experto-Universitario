@@ -39,8 +39,8 @@ contract CertificateManager {
     
     // Inicialización de algunos certificados de ejemplo
     certificates["Vitalik Butherin"] = Certificate("Universidad Europea de Madrid", "Vitalik Butherin", "Experto universitario en blockchain", 70, 2015, true);
-    certificates["Elon Musk"] = Certificates("Universidad Europea de Madrid", "Elon Musk", "Ingeniería aeronáutica", 45, 2019, false);
-  };
+    certificates["Elon Musk"] = Certificates("Universidad Europea de Madrid", "Elon Musk", "Ingenieria aeronautica", 45, 2019, false);
+  }
     
     // Función para crear un ceertificado
     function createCertificate(string, string, string, uint, uint, bool) public {
@@ -50,7 +50,7 @@ contract CertificateManager {
     
     //Creación del certificado
     certificates[_student] = Certificate(_entity, _course, _student, _grade, _year, false);
-  };
+  }
   
   // Método para verificar un certificado
   function verifyCertificate(string _student) public {
@@ -59,7 +59,7 @@ contract CertificateManager {
     
     //Verificación del certificado 
     certificates[_student].verified = true;
-    };
+    }
     
     // Método para obtener la información de un certificado
     function getCertificate(string _student) public view returns (string, string, string, uint, uint, bool) {
